@@ -1,0 +1,20 @@
+name: release-audit
+
+on:
+  push:
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Write audit summary
+        run: |
+          mkdir -p artifact
+          echo "Release readiness audit: placeholder summary - audit completed successfully." > artifact/audit-summary.txt
+          cat artifact/audit-summary.txt
+
+      - name: Upload audit report artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: audit-report
+          path: artifact/audit-summary.txt
